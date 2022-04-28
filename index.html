@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 
-    <title>Recepty</title>
+    <title>Pizzapedia</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,58 +18,58 @@
 
         <header class="hlavicka">
             <div class="logo">
-                <img src="images/recepty-logo.svg" alt="Recepty logo">
+                <img src="images/pizzapedia.png" alt="Pizzapedia logo">
             </div>
             <div class="hledani">
-                <!--
+                
                 <label for="hledat">Hledat</label>
                 <div class="hledani-skupina">
-                    <input type="text" id="hledat" placeholder="Název receptu">
+                    <input type="text" id="hledat" placeholder="Název pizzy">
                     <button>Hledat</button>
                 </div>
-                -->
+               
             </div>
             <div class="kategorie">
-                <!--
-                <label for="kategorie">Kategorie</label>
+                
+                <label for="kategorie">Typy pizzy</label>
                 <select id="kategorie">
                     <option value=""></option>
-                    <option>Snídaně</option>
-                    <option>Hlavní jídlo</option>
-                    <option>Dezert</option>
+                    <option>Slaná pizza</option>
+                    <option>Sladká pizza</option>
+                    <option>Speciální pizza</option>
                 </select>
-                -->
+               
             </div>
             <div class="razeni">
-                <!--
+                
                 <label for="razeni">Seřadit</label>
                 <select id="razeni">
                     <option value=""></option>
-                    <option value="1">Od nejlepších</option>
+                    <option value="1">Od nejlepší</option>
                     <option value="2">Od nejhorších</option>
                 </select>
-                -->
+               
             </div>
         </header>
 
 
         <div id="recepty" class="recepty">
-            <!--
+            
             <div class="recept">
                 <div class="recept-obrazek">
-                    <img src="https://ms2.ostium.cz/instance/web-recepty/j1cFHt79/h389w574t.jpg" alt="Obrazek">
+                    <img src="images/Prosciutto.png" alt="Obrazek">
                 </div>
 
                 <div class="recept-info">
-                    <h3>Halloumi z grilu na salátu</h3>
+                    <h3>Prosciutto</h3>
                 </div>
             </div>
-            -->
+           
         </div>
 
         <div class="recept-detail">
             <div class="recept-detail-obrazek">
-                    <img id="recept-foto" src="sem-doplnit-adresu-obrazku.jpg" alt="">
+                    <img id="recept-foto" src="images/Prosciutto.png" alt="Obrazek">
             </div>
 
             <div class="recept-detail-info">
@@ -97,3 +97,22 @@
 
 </body>
 </html>
+
+
+<!-- <label for="kategorie">Kategorie</label>
+<select id="kategorie" onchange="filtrRecepty()">
+    <option value=""></option>
+    <option value="snidane">Snídaně</option>
+    <option value="hlavni-jidlo">Hlavní jídlo</option>
+    <option value="dezert">Dezert</option>
+</select>
+
+</div>
+<div class="razeni">
+
+<label for="razeni">Seřadit</label>
+<select id="razeni" onchange="filtrRecepty()">
+    <option value=""></option>
+    <option value="nejlepsi">Od nejlepších</option>
+    <option value="nejhorsi">Od nejhorších</option>
+</select> -->

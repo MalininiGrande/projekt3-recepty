@@ -8,10 +8,10 @@ html {
     box-sizing: inherit;
 }
 
-/* * {
+* {
     margin: 0;
     padding: 0;
-} */
+}
 
 
 body {
@@ -37,7 +37,7 @@ h1 {
     min-width: 1020px;
     max-width: 1300px;
     display: grid;
-    grid-template-rows: 6rem minmax(40rem, auto);
+    grid-template-rows: 10rem minmax(40rem, auto);
     grid-template-columns: 1.5fr 3fr;
     background: #fff;
     border-radius: 8px;
@@ -59,8 +59,9 @@ h1 {
 }
 
 .logo img {
-    margin-top: 15px;
-    height: 40px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+    height: 150px;
 }
 
 .hledani {
