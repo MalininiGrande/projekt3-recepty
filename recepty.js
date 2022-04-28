@@ -4,7 +4,7 @@ const recepty = [
     hodnoceni: 4.9,
     kategorie: 'Slaná pizza',
     stitek: 'slanaPizza',
-    img: 'Prosciutto.png'
+    img: 'images/Prosciutto.png'
   },
   { nadpis: 'Quattro formaggi',
     popis: 'Taleggio sýr z Lombardie, fior di latte mozzarella, Gorngozola Dolce , Grana Padano, rukola, smetana',
