@@ -79,7 +79,7 @@ const recepty = [
   { nadpis: 'Lanýžová pizza',
     popis: 'Vepřová klobása Salsiccia z Toskánska, fior di latte mozzarella, salsa di tartufo, žampiony, smetana a ricotta.',
     hodnoceni: 1.8,
-    kategorie: 'Slana pizza',
+    kategorie: 'Slaná pizza',
     stitek: 'slanaPizza',
     img: 'images/Lanyzova.png'
   },

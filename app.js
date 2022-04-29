@@ -19,70 +19,31 @@ recept-hodnoceni, recept-nazev, recept-popis.
 */
 
 // promenne
-const nalezeneRecepty = recepty;
-let seznamReceptu = document.querySelector('#recepty');
-let poleRecepty = [];
-let receptySlana = [];
-let receptySladka = [];
-let receptySpecialni = [];
+let nalezeneRecepty = recepty;
+// let poleRecepty = [];
+// let receptySlana = [];
+// let receptySladka = [];
+// let receptySpecialni = [];
 
+zobrazSeznamReceptu()
 
-
-// jednotlove objekty pole by se mely zobrazovat v id recepty
-function zobrazSeznamReceptu (nalezeneRecepty) {
-console.log(nalezeneRecepty);
-let seznamReceptuElement = document.querySelector("#recepty");
-seznamReceptuElement.innerHTML = "";
-
-
-nalezeneRecepty.forEach((nalezeneRecepty, index)=> {
-        let receptElement = zobrazReceptMenu(nalezeneRecepty, index);
-        seznamReceptu.appendChild(receptElement);
-}
-)
-}
-// vytvorime kontejnery pro jednotlive casti objektu a sparujeme s html
-function zobrazReceptMenu(nalezeneRecepty, index) {
-let receptElement = document.createElement('div');
-receptElement.className = "recept";
-seznamReceptu.appendChild(receptElement);
-
-// Vytvorime kontejner pro obrazek
-let receptObrazekElement = document.createElement('div');
-receptObrazekElement.className = "recept-obrazek";
-let receptObrazekSrcElement = document.createElement('img');
-receptObrazekSrcElement.src = nalezeneRecepty.img;
-receptObrazekSrcElement.alt = "Obrazek";
-receptObrazekElement.appendChild(receptObrazekSrcElement);
-receptElement.appendChild(receptObrazekElement);
-
-
-// vytvorime kontejner pro info
-let receptInfoElement = document.createElement ('div');
-receptInfoElement.className = "recept-info";
-receptElement.appendChild(receptInfoElement);
-
-
-// vytvorime kontejner pro nadpis
-let receptNadpisElement = document.createElement('h3');
-receptNadpisElement.textContent = nalezeneRecepty.nadpis;
-receptElement.appendChild(receptNadpisElement);
-
-console.log(receptElement);
-
-// Pridam spoustec akce
-receptElement.addEventListener("click", zobrazReceptDetail(nalezeneRecepty));
-
-return receptElement;
-
-}
-
-// konkretni recept po rozkliknuti
-function zobrazReceptDetail (){
+// // jednotlove objekty pole by se mely zobrazovat v id recepty
+function zobrazSeznamReceptu() {
         console.log(nalezeneRecepty);
-        let aktualniRecept = nalezeneRecepty[index];
+        let seznamReceptuElement = document.getElementById('recepty');
 
-        let receptNadpis = document.querySelector("#recept-nadpis");
+
+        nalezeneRecepty.forEach((recept, index) => {
+                let receptElement = zobrazReceptMenu(recept, index);
+                seznamReceptuElement.appendChild(receptElement)
+
+        })
+
+
+}
+        function zobrazReceptDetail(index){
+        let aktualniRecept = recepty[index];
+        let receptNadpis = document.querySelector("#recept-nazev");
         receptNadpis.textContent = aktualniRecept.nadpis;
 
         let receptPopis = document.querySelector("#recept-popis");
@@ -95,29 +56,105 @@ function zobrazReceptDetail (){
         receptKategorie.textContent = aktualniRecept.kategorie;
 
         let receptFoto = document.querySelector("#recept-foto");
-        receptFoto.src = aktualniRecept.img;
+        receptFoto.src = aktualniRecept.img;        
 
-}
-
-let aktualniReceptStorage = localStorage.getItem("aktulniRecept");
-if(aktualniReceptStorage !== null) {
-        zobrazReceptDetail(Number(aktualniReceptStorage))
-}
+        }
+        
 
 
-//  Pokud uživatel začně hledat, zavolá se funkce hledej v pizzách
-let hledat = document.querySelector('#hledat');
-hledat.addEventListener('input', () => {
-        hledejRecept();
+// }
+// )
+// }
+// // vytvorime kontejnery pro jednotlive casti objektu a sparujeme s html
+function zobrazReceptMenu(recept, index) {
+let receptElement = document.createElement('div');
+receptElement.className = "recept";
+// seznamReceptu.appendChild(receptElement);
+
+// // Vytvorime kontejner pro obrazek
+let receptObrazekElement = document.createElement('div');
+receptObrazekElement.className = "recept-obrazek";
+
+let receptObrazekSrcElement = document.createElement('img');
+receptObrazekSrcElement.src = recept.img;
+receptObrazekSrcElement.alt = "Obrazek";
+
+receptObrazekElement.appendChild(receptObrazekSrcElement);
+receptElement.appendChild(receptObrazekElement);
+
+
+// // vytvorime kontejner pro info
+let receptInfoElement = document.createElement('div');
+receptInfoElement.className = "recept-info";
+receptElement.appendChild(receptInfoElement);
+
+// vytvorime kontejner pro nadpis
+let receptNadpisElement = document.createElement('h3');
+receptNadpisElement.textContent = recept.nadpis;
+receptInfoElement.appendChild(receptNadpisElement);
+
+console.log(receptElement);
+
+// Pridam spoustec akce
+receptElement.addEventListener("click", () => {
+        zobrazReceptDetail(index);
 });
 
-// definujeme hledej recept / ten by se mel filtrovat podle daneho slova
-function hledejRecept() {
-        console.log("hledej Recept");
-        let hledat = document.querySelector('#hledat');
-        let vyhledaneRecepty = nalezeneRecepty.filter(recepty => recepty.nadpis.toLowerCase().includes(hledat.value))
-        zobrazSeznamReceptu(vyhledaneRecepty);
+return receptElement
+
 }
+
+// 
+
+
+// // Pridam spoustec akce
+// receptElement.addEventListener("click", zobrazReceptDetail(nalezeneRecepty));
+
+
+// }
+
+// // konkretni recept po rozkliknuti
+// function zobrazReceptDetail (){
+//         console.log(nalezeneRecepty);
+// }
+//         let aktualniRecept = nalezeneRecepty[index];
+
+//         let receptNadpis = document.querySelector("#recept-nadpis");
+//         receptNadpis.textContent = aktualniRecept.nadpis;
+
+//         let receptPopis = document.querySelector("#recept-popis");
+//         receptPopis.textContent = aktualniRecept.popis;
+
+//         let receptHodnoceni = document.querySelector("#recept-hodnoceni");
+//         receptHodnoceni.textContent = aktualniRecept.hodnoceni;
+
+//         let receptKategorie = document.querySelector("#recept-kategorie");
+//         receptKategorie.textContent = aktualniRecept.kategorie;
+
+//         let receptFoto = document.querySelector("#recept-foto");
+//         receptFoto.src = aktualniRecept.img;
+
+// }
+
+// let aktualniReceptStorage = localStorage.getItem("aktulniRecept");
+// if(aktualniReceptStorage !== null) {
+//         zobrazReceptDetail(Number(aktualniReceptStorage))
+// }
+
+
+// //  Pokud uživatel začně hledat, zavolá se funkce hledej v pizzách
+// let hledat = document.querySelector('#hledat');
+// hledat.addEventListener('input', () => {
+//         hledejRecept();
+// });
+
+// // definujeme hledej recept / ten by se mel filtrovat podle daneho slova
+// function hledejRecept() {
+//         console.log("hledej Recept");
+//         let hledat = document.querySelector('#hledat');
+//         let vyhledaneRecepty = nalezeneRecepty.filter(recepty => recepty.nadpis.toLowerCase().includes(hledat.value))
+//         zobrazSeznamReceptu(vyhledaneRecepty);
+// }
 
 
 
