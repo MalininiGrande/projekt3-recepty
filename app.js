@@ -19,11 +19,18 @@ recept-hodnoceni, recept-nazev, recept-popis.
 */
 
 // promenne
+let aktualniReceptStorage = localStorage.getItem("aktualniRecept");
 let nalezeneRecepty = recepty;
 // let poleRecepty = [];
 // let receptySlana = [];
 // let receptySladka = [];
 // let receptySpecialni = [];
+
+// kontrola zobrazeni posledniho receptu z local storage
+if (aktualniReceptStorage !== null){
+        zobrazReceptDetail(Number(aktualniReceptStorage));
+}
+
 
 zobrazSeznamReceptu()
 
@@ -41,6 +48,7 @@ function zobrazSeznamReceptu() {
 
 
 }
+// // konkretni recept po rozkliknuti
         function zobrazReceptDetail(index){
         let aktualniRecept = recepty[index];
         let receptNadpis = document.querySelector("#recept-nazev");
@@ -56,7 +64,16 @@ function zobrazSeznamReceptu() {
         receptKategorie.textContent = aktualniRecept.kategorie;
 
         let receptFoto = document.querySelector("#recept-foto");
-        receptFoto.src = aktualniRecept.img;        
+        receptFoto.src = aktualniRecept.img;   
+        
+        
+
+// let aktualniReceptStorage = 
+localStorage.setItem("aktualniRecept", index);
+// if(aktualniReceptStorage !== null) {
+//         zobrazReceptDetail(Number(aktualniReceptStorage))
+// }
+
 
         }
         
@@ -107,39 +124,9 @@ return receptElement
 // 
 
 
-// // Pridam spoustec akce
-// receptElement.addEventListener("click", zobrazReceptDetail(nalezeneRecepty));
 
 
-// }
 
-// // konkretni recept po rozkliknuti
-// function zobrazReceptDetail (){
-//         console.log(nalezeneRecepty);
-// }
-//         let aktualniRecept = nalezeneRecepty[index];
-
-//         let receptNadpis = document.querySelector("#recept-nadpis");
-//         receptNadpis.textContent = aktualniRecept.nadpis;
-
-//         let receptPopis = document.querySelector("#recept-popis");
-//         receptPopis.textContent = aktualniRecept.popis;
-
-//         let receptHodnoceni = document.querySelector("#recept-hodnoceni");
-//         receptHodnoceni.textContent = aktualniRecept.hodnoceni;
-
-//         let receptKategorie = document.querySelector("#recept-kategorie");
-//         receptKategorie.textContent = aktualniRecept.kategorie;
-
-//         let receptFoto = document.querySelector("#recept-foto");
-//         receptFoto.src = aktualniRecept.img;
-
-// }
-
-// let aktualniReceptStorage = localStorage.getItem("aktulniRecept");
-// if(aktualniReceptStorage !== null) {
-//         zobrazReceptDetail(Number(aktualniReceptStorage))
-// }
 
 
 // //  Pokud uživatel začně hledat, zavolá se funkce hledej v pizzách
@@ -157,11 +144,6 @@ return receptElement
 // }
 
 
-
-/* <div class="recept-detail-obrazek">
-                    <img id="recept-foto" src="images/Prosciutto.png" alt="Obrazek">
-            </div>
- */
 
 
 
