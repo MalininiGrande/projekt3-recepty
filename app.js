@@ -32,15 +32,31 @@ if (aktualniReceptStorage !== null){
 }
 
 
-zobrazSeznamReceptu()
+zobrazSeznamReceptu(nalezeneRecepty)
 
-// // jednotlove objekty pole by se mely zobrazovat v id recepty
-function zobrazSeznamReceptu() {
+let hledat = document.querySelector('#hledat');
+//  Pokud uživatel začně hledat, zavolá se funkce hledejRecept v pizzách
+hledat.addEventListener('input', () => {
+        hledejRecept();
+});
+
+
+
+function hledejRecept(){
+        let hledat = document.querySelector('#hledat');
+        let vyhledaneRecepty = recepty.filter(recept => recept.nadpis.toLowerCase().includes(hledat.value))
+        console.log(vyhledaneRecepty);
+        zobrazSeznamReceptu(vyhledaneRecepty);
+};
+
+
+// // jednotlive objekty pole by se mely zobrazovat v id recepty
+function zobrazSeznamReceptu(recepty) {
         console.log(nalezeneRecepty);
         let seznamReceptuElement = document.getElementById('recepty');
+        seznamReceptuElement.innerHTML = "";
 
-
-        nalezeneRecepty.forEach((recept, index) => {
+        recepty.forEach((recept, index) => {
                 let receptElement = zobrazReceptMenu(recept, index);
                 seznamReceptuElement.appendChild(receptElement)
 
@@ -122,32 +138,6 @@ return receptElement
 }
 
 // 
-
-
-
-
-
-
-
-// //  Pokud uživatel začně hledat, zavolá se funkce hledej v pizzách
-// let hledat = document.querySelector('#hledat');
-// hledat.addEventListener('input', () => {
-//         hledejRecept();
-// });
-
-// // definujeme hledej recept / ten by se mel filtrovat podle daneho slova
-// function hledejRecept() {
-//         console.log("hledej Recept");
-//         let hledat = document.querySelector('#hledat');
-//         let vyhledaneRecepty = nalezeneRecepty.filter(recepty => recepty.nadpis.toLowerCase().includes(hledat.value))
-//         zobrazSeznamReceptu(vyhledaneRecepty);
-// }
-
-
-
-
-
-
 
 
 
