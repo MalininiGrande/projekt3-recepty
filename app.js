@@ -47,7 +47,7 @@ console.log("recepty kategorie push")
   }
 }
 
-// kontrola zobrazeni posledniho receptu z local storage
+// kontrola zobrazeni posledniho receptu z local storage, jak udelat, aby se po prvním nacteni zobrazovala stranka bez predchoziho receptu? 
 if (aktualniReceptStorage !== null){
         zobrazReceptDetail(Number(aktualniReceptStorage));
 }
@@ -86,7 +86,7 @@ function zobrazSeznamReceptu(recepty) {
 
 }
 // // konkretni recept po rozkliknuti
-        function zobrazReceptDetail(index){
+function zobrazReceptDetail(index){
         let aktualniRecept = recepty[index];
         let receptNadpis = document.querySelector("#recept-nazev");
         receptNadpis.textContent = aktualniRecept.nadpis;
@@ -104,36 +104,25 @@ function zobrazSeznamReceptu(recepty) {
         receptFoto.src = aktualniRecept.img;   
         
         
-
-// let aktualniReceptStorage = 
 localStorage.setItem("aktualniRecept", index);
-// if(aktualniReceptStorage !== null) {
-//         zobrazReceptDetail(Number(aktualniReceptStorage))
-// }
+}
 
-        }
-        
-
-
-// }
-// )
-// }
 // // vytvorime kontejnery pro jednotlive casti objektu a sparujeme s html
 function zobrazReceptMenu(recept, index) {
-let receptElement = document.createElement('div');
-receptElement.className = "recept";
+        let receptElement = document.createElement('div');
+        receptElement.className = "recept";
 // seznamReceptu.appendChild(receptElement);
 
 // // Vytvorime kontejner pro obrazek
-let receptObrazekElement = document.createElement('div');
-receptObrazekElement.className = "recept-obrazek";
+        let receptObrazekElement = document.createElement('div');
+        receptObrazekElement.className = "recept-obrazek";
 
-let receptObrazekSrcElement = document.createElement('img');
-receptObrazekSrcElement.src = recept.img;
-receptObrazekSrcElement.alt = "Obrazek";
+        let receptObrazekSrcElement = document.createElement('img');
+        receptObrazekSrcElement.src = recept.img;
+        receptObrazekSrcElement.alt = "Obrazek";
 
-receptObrazekElement.appendChild(receptObrazekSrcElement);
-receptElement.appendChild(receptObrazekElement);
+        receptObrazekElement.appendChild(receptObrazekSrcElement);
+        receptElement.appendChild(receptObrazekElement);
 
 
 // // vytvorime kontejner pro info
@@ -166,6 +155,31 @@ let seznamReceptuElement = document.getElementById('recepty');
 // Ma tam byt append child poli slana, sladka a speacialni?
 
 filtrRecepty();
+
+
+
+// seřadí nalezeneRecepty podle abecedy
+function seradPodleAbecedy(nalezeneRecepty) { 
+        console.log("Serad podle abecedy"); 
+          nalezeneRecepty.sort((a,b) => (a.nadpis > b.nadpis) ? 1 : -1);
+        }
+
+// seřadí vložené pole od nejlepšího hodnocení
+function seradOdNejlepsiho(nalezeneRecepty) { 
+        console.log("Serad od nejlepsiho");  
+        nalezeneRecepty.sort(function(a,b) {
+    return b.receptHodnoceni - a.receptHodnoceni;
+  });
+}
+
+// seřadí vložené pole od nejhoršího hodnocení
+function seradOdNejhorsiho(nalezeneRecepty) { 
+        console.log("Serad od nejhorsiho");  
+        nalezeneRecepty.sort(function(a,b) {
+  return a.receptHodnoceni - b.receptHodnoceni;
+  });
+}
+
 
 // po spusteni funkce filtr recepty a pokud nebude vybrana kategorie ani hodnoceni, vypisou se vsechny recepty
 function filtrRecepty(){
@@ -267,29 +281,6 @@ if (kategorie.value === 'Speciální pizza' && razeni.value === 'Od nejhorších
         seradOdNejhorsiho(receptySpecialni); 
         vypisRecepty(receptySpecialni);  
 }
-}
-
-
-// seřadí nalezeneRecepty podle abecedy
-function seradPodleAbecedy(nalezeneRecepty) { 
-        console.log("Serad podle abecedy"); 
-          nalezeneRecepty.sort((a,b) => (a.nadpis > b.nadpis) ? 1 : -1);
-        }
-
-// seřadí vložené pole od nejlepšího hodnocení
-function seradOdNejlepsiho(nalezeneRecepty) { 
-        console.log("Serad od nejlepsiho");  
-        nalezeneRecepty.sort(function(a,b) {
-    return b.receptHodnoceni - a.receptHodnoceni;
-  });
-}
-
-// seřadí vložené pole od nejhoršího hodnocení
-function seradOdNejhorsiho(nalezeneRecepty) { 
-        console.log("Serad od nejhorsiho");  
-        nalezeneRecepty.sort(function(a,b) {
-  return a.receptHodnoceni - b.receptHodnoceni;
-  });
 }
 
 
