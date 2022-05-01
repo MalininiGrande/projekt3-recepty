@@ -32,7 +32,7 @@
             <div class="kategorie">
                 
                 <label for="kategorie">Typy pizzy</label>
-                <select id="kategorie">
+                <select id="kategorie" onchange="filtrRecepty()">
                     <option value=""></option>
                     <option>Slaná pizza</option>
                     <option>Sladká pizza</option>
@@ -43,9 +43,9 @@
             <div class="razeni">
                 
                 <label for="razeni">Seřadit</label>
-                <select id="razeni">
+                <select id="razeni" onchange="filtrRecepty()">
                     <option value=""></option>
-                    <option value="1">Od nejlepší</option>
+                    <option value="1">Od nejlepších</option>
                     <option value="2">Od nejhorších</option>
                 </select>
                
